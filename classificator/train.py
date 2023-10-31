@@ -1,5 +1,8 @@
-import data as d
-import model
+import sys
+sys.path.append(".")
+
+import classificator.data as d
+import classificator.model as model
 
 import torch.nn as nn
 import torch.optim as optim
