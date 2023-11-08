@@ -9,12 +9,20 @@ import torch.optim as optim
 
 import lightning as L
 
+import wandb
+
+from pytorch_lightning.loggers import WandbLogger
+
+
+wandb_logger = WandbLogger("cool-girly-pytorch-project")
+
 dm = d.L_data_module()
 model = model.L_model(*dm.dims, dm.num_classes,hidden_size=256)
 trainer = L.Trainer(
     max_epochs=5,
     accelerator='auto',
     devices=1,
+    logger=wandb_logger,
 )
 trainer.fit(model,dm)
 
